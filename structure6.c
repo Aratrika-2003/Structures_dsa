@@ -3,30 +3,44 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct dyn
+typedef struct 
 {
     int marks;
-    char sub[60];
-};
+    char grade;
+}info;
+
 int main()
 {
-    struct dyn *p;
-    int n,i;
-    printf("\nEnter the number of records: ");
+    info *arr;
+    int i,n;
+    info temp;
+    char buffer;
+    printf("\nEnter the number of students ");
     scanf("%d",&n);
 
-    p = (struct dyn*)malloc(n*sizeof(struct dyn));
+    arr = (info*)malloc(n * sizeof(info));
 
     for(i=0;i<n;i++)
     {
-        printf("\nThe marks and subjects: ");
-        scanf("%s%d",(p+i)->sub,&(p+i)->marks);
+        
+        scanf("%c",&buffer);
+
+        printf("\nEnter the grade of sudent %d: ", i + 1);
+        scanf("%c",&temp.grade);
+
+       
+
+       printf("\nEnter the marks of sudent %d: ", i + 1);
+        scanf("%d",&temp.marks);
+
+        arr[i] = temp;
+
     }
 
-    printf("\nDisplaying the record: ");
     for(i=0;i<n;i++)
     {
-        printf("%s\n%d\n",(p+i)->sub,(p+i)->marks);
+        printf("\nThe marks of student %d is %d and the grade is %c\n", i+1, arr[i].marks, arr[i].grade);
     }
+
     return 0;
 }
